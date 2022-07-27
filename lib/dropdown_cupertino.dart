@@ -49,7 +49,7 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
                     width: 0.0, color: CupertinoColors.inactiveGray),
               ),
             ),
-        onPressed: (() => context.filterDialog(
+        onPressed: (() => context._filterDialog(
             CupertinoPicker(
               magnification: 1.22,
               squeeze: 1.2,
@@ -83,7 +83,7 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
 }
 
 extension ContextExtension on BuildContext {
-  void filterDialog(Widget child, {double? height}) {
+  void _filterDialog(Widget child, {double? height}) {
     showCupertinoModalPopup<void>(
         context: this,
         builder: (BuildContext context) => Container(
