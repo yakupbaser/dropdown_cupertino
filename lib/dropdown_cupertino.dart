@@ -1,14 +1,14 @@
 library dropdown_cupertino;
 
-import 'package:dropdown_cupertino/extension/context_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DropDownCupertino<T extends Enum> extends StatefulWidget {
   final String initialText;
   final TextStyle? style;
+  final ButtonStyle? buttonStyle;
   final double? height;
-  final void Function(String) onSelectedItemChanged;
+  final Function(Enum) onSelectedItemChanged;
   final List<T> enumValues;
   final Map<T, String> pickList;
   const DropDownCupertino(
@@ -18,7 +18,8 @@ class DropDownCupertino<T extends Enum> extends StatefulWidget {
       required this.onSelectedItemChanged,
       this.height,
       required this.enumValues,
-      required this.pickList})
+      required this.pickList,
+      this.buttonStyle})
       : super(key: key);
 
   @override
@@ -39,14 +40,15 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
     return SizedBox(
       width: double.infinity,
       child: TextButton(
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-            side: const BorderSide(
-                width: 0.0, color: CupertinoColors.inactiveGray),
-          ),
-        ),
+        style: widget.buttonStyle ??
+            TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+                side: const BorderSide(
+                    width: 0.0, color: CupertinoColors.inactiveGray),
+              ),
+            ),
         onPressed: (() => context.filterDialog(
             CupertinoPicker(
               magnification: 1.22,
@@ -59,7 +61,7 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
                       .pickList[widget.enumValues[selectedItem]]
                       .toString();
                 });
-                widget.onSelectedItemChanged(categoryText);
+                widget.onSelectedItemChanged(widget.enumValues[selectedItem]);
               },
               children:
                   List<Widget>.generate(widget.enumValues.length, (int index) {
@@ -77,5 +79,27 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
         ),
       ),
     );
+  }
+}
+
+extension ContextExtension on BuildContext {
+  void filterDialog(Widget child, {double? height}) {
+    showCupertinoModalPopup<void>(
+        context: this,
+        builder: (BuildContext context) => Container(
+              height: height ?? 216,
+              padding: const EdgeInsets.only(top: 6.0),
+              // The Bottom margin is provided to align the popup above the system navigation bar.
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              // Provide a background color for the popup.
+              color: CupertinoColors.systemBackground.resolveFrom(context),
+              // Use a SafeArea widget to avoid system overlaps.
+              child: SafeArea(
+                top: false,
+                child: child,
+              ),
+            ));
   }
 }
