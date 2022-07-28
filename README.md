@@ -29,6 +29,18 @@ There is an example, you can check it
 to `/example` folder. 
 
 ```dart
+enum Person {
+  yakup,
+  burak,
+  ramazan,
+}
+
+Map<Person, String> personMap = {
+  Person.yakup: "YAKUP",
+  Person.ramazan: "RAMAZAN",
+  Person.burak: "BURAK"
+};
+
 DropDownCupertino<Person>(
               initialText: "Select a Person :",
               pickList: personMap,
