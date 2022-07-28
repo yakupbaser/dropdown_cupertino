@@ -25,6 +25,8 @@ start using the package.
 
 ## Usage
 
+![ezgif-2-79bf9786a7](https://user-images.githubusercontent.com/13915117/181441046-35d17d06-ae34-492d-8142-3dee280fc62f.gif)
+
 There is an example, you can check it
 to `/example` folder. 
 
