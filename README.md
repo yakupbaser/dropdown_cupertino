@@ -31,14 +31,18 @@ There is an example, you can check it
 to `/example` folder. 
 
 ```dart
-// You can generate your custom enum
+
+// you can generate your custom enum
 enum Person {
   yakup,
   burak,
   ramazan,
 }
-//key: your custom enum, value: text that will appear on widgets
-Map<Person, String> personMap = {
+
+// key: your custom enum. null key is optional, 
+// value: text that will appear on widgets
+Map<Person?, String> personMap = {
+  null: "INITIAL",
   Person.yakup: "YAKUP",
   Person.ramazan: "RAMAZAN",
   Person.burak: "BURAK"

@@ -27,7 +27,7 @@ enum Person {
 }
 
 Map<Person?, String> personMap = {
-  null: "DEFAULT",
+  null: "INITIAL",
   Person.yakup: "YAKUP",
   Person.ramazan: "RAMAZAN",
   Person.burak: "BURAK"
