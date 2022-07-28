@@ -32,7 +32,7 @@ There is an example, you can check it
 to `/example` folder. 
 
 
-```
+```dart
 DropDownCupertino<Person>(
               initialText: "Select a Person :",
               pickList: personMap,
@@ -49,11 +49,6 @@ DropDownCupertino<Person>(
   - enumValues: List of all enums.
   - height: Height of dropdown menu visible in app.
   - onSelectedItemChanged: Prints the selected item to the console.
-  
-  
-```dart
-const like = 'sample';
-```
 
 ## Additional information
 
