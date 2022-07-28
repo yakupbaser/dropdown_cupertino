@@ -14,9 +14,6 @@ and the Flutter guide for
 
 You can use this widget that can perform any enum selection on iOS and Android devices. Offers a simple aesthetic to your mobile app.
 
-
-
-
 ## Features
 
 Select any enum with cupertino style
@@ -31,12 +28,10 @@ start using the package.
 There is an example, you can check it
 to `/example` folder. 
 
-
 ```dart
 DropDownCupertino<Person>(
               initialText: "Select a Person :",
               pickList: personMap,
-              enumValues: Person.values,
               height: 160,
               onSelectedItemChanged: ((selected) {
                 debugPrint("Selected text is: $selected");
@@ -46,7 +41,6 @@ DropDownCupertino<Person>(
 
   - initialText: Text to be seen before opening the menu.
   - pickList: Dropdown type.
-  - enumValues: List of all enums.
   - height: Height of dropdown menu visible in app.
   - onSelectedItemChanged: Prints the selected item to the console.
 

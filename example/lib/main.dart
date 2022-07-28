@@ -28,8 +28,8 @@ enum Person {
 
 Map<Person, String> personMap = {
   Person.yakup: "YAKUP",
-  Person.burak: "BURAK",
-  Person.ramazan: "RAMAZAN"
+  Person.ramazan: "RAMAZAN",
+  Person.burak: "BURAK"
 };
 
 class MyHomePage extends StatefulWidget {
@@ -55,7 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
             DropDownCupertino<Person>(
               initialText: "Select a Person :",
               pickList: personMap,
-              enumValues: Person.values,
               height: 160,
               onSelectedItemChanged: ((selected) {
                 debugPrint("Selected text is: $selected");

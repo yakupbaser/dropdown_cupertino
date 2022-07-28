@@ -9,7 +9,6 @@ class DropDownCupertino<T extends Enum> extends StatefulWidget {
   final ButtonStyle? buttonStyle;
   final double? height;
   final Function(Enum) onSelectedItemChanged;
-  final List<T> enumValues;
   final Map<T, String> pickList;
   const DropDownCupertino(
       {Key? key,
@@ -17,7 +16,6 @@ class DropDownCupertino<T extends Enum> extends StatefulWidget {
       this.style,
       required this.onSelectedItemChanged,
       this.height,
-      required this.enumValues,
       required this.pickList,
       this.buttonStyle})
       : super(key: key);
@@ -57,17 +55,16 @@ class _DropDownCupertinoState extends State<DropDownCupertino> {
               itemExtent: 32,
               onSelectedItemChanged: (int selectedItem) {
                 setState(() {
-                  categoryText = widget
-                      .pickList[widget.enumValues[selectedItem]]
-                      .toString();
+                  categoryText = widget.pickList.values.elementAt(selectedItem);
                 });
-                widget.onSelectedItemChanged(widget.enumValues[selectedItem]);
+
+                widget.onSelectedItemChanged(
+                    widget.pickList.keys.toList()[selectedItem]);
               },
               children:
-                  List<Widget>.generate(widget.enumValues.length, (int index) {
+                  List<Widget>.generate(widget.pickList.length, (int index) {
                 return Center(
-                  child: Text(
-                      widget.pickList[widget.enumValues[index]].toString(),
+                  child: Text(widget.pickList.values.elementAt(index),
                       style: widget.style),
                 );
               }),
