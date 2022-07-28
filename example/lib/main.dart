@@ -26,7 +26,8 @@ enum Person {
   ramazan,
 }
 
-Map<Person, String> personMap = {
+Map<Person?, String> personMap = {
+  null: "DEFAULT",
   Person.yakup: "YAKUP",
   Person.ramazan: "RAMAZAN",
   Person.burak: "BURAK"
